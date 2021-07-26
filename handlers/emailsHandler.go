@@ -43,11 +43,12 @@ func SendEmail(rw http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	auth := smtp.PlainAuth("", config.Email.Username, config.Email.Pass, config.Email.Host)
+	auth := smtp.PlainAuth("", config.Email.Username, config.Email.Password, config.Email.Host)
 
 	message := emailMessage.GenerateMessage()
 
-	erE := smtp.SendMail(config.Email.Host+":"+config.Email.Port, auth, emailMessage.From, []string{emailMessage.To}, message)
+	erE := smtp.SendMail(config.Email.Host+":"+config.Email.Port, auth, emailMessage.From,
+		emailMessage.To, message)
 
 	if erE != nil {
 		logger.ERR("Could Not Send Email: ", err)

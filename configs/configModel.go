@@ -6,11 +6,10 @@ const (
   port: "9002"
   logLevel: 3
 email:
-  host: "smtp.gmail.com"
+  host: "smtp.mailtrap.io"
   port: "587"
-  username: "user"
-  pass: "root"
-  from: 20
+  username: "6b5e91a7479084"
+  password: "5f96e81989ef58"
 `
 )
 
@@ -26,8 +25,7 @@ type GeneralConfigs struct {
 
 type Email struct {
 	Username string `yaml:"username"`
-	Pass     string `yaml:"pass"`
-	From     string `yaml:"from"`
+	Password string `yaml:"password"`
 	Host     string `yaml:"host"`
 	Port     string `yaml:"port"`
 }

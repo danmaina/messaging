@@ -1,4 +1,4 @@
-package messaging
+package main
 
 import (
 	"github.com/danmaina/logger"
