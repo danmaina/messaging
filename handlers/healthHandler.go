@@ -16,6 +16,7 @@ const (
 	applicationRunState = "Running"
 )
 
+// GetAppStatus is a health check endpoint that returns the application health Status and running state
 func GetAppStatus(rw http.ResponseWriter, r *http.Request) {
 
 	logger.DEBUG("Received Request. \nHeaders: ", r.Header, "\nMethod: ", r.Method, "\nContentLength: ", r.ContentLength)

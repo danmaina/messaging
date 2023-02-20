@@ -12,7 +12,9 @@ type EmailMessage struct {
 }
 
 // TODO: Add Branded Templates to use
+// TODO: Add Endpoint to view available templates
 
+// GenerateMessage creates an email to be dispatched from an email request struct
 func (e EmailMessage) GenerateMessage() []byte {
 
 	message := "From:" + e.From + "\n" +

@@ -3,11 +3,11 @@ package configs
 import (
 	"github.com/danmaina/logger"
 	"github.com/go-yaml/yaml"
-	"io/ioutil"
+	"io"
 	"os"
 )
 
-// Read Configs from file or create default Configs
+// ReadConfigs Reads Configs from file or create default Configs
 func ReadConfigs() (*Config, error) {
 	logger.DEBUG("Reading Default Config File or Creating Config File if not exists")
 
@@ -22,7 +22,7 @@ func ReadConfigs() (*Config, error) {
 	}
 
 	// Read Contents of config file
-	configFileByteArr, errReadingByteArr := ioutil.ReadAll(configFile)
+	configFileByteArr, errReadingByteArr := io.ReadAll(configFile)
 
 	if errReadingByteArr != nil {
 		logger.ERR("An Error Occurred while reading contents of config file: ", errReadingByteArr)

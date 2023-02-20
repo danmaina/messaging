@@ -20,7 +20,7 @@ type Msg struct {
 	Message string `json:"message"`
 }
 
-// TODO: Add token authentication
+// SendEmail processes requests to send out emails. TODO: Add token authentication
 func SendEmail(rw http.ResponseWriter, r *http.Request) {
 
 	var emailMessage models.EmailMessage
@@ -33,7 +33,7 @@ func SendEmail(rw http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	logger.INFO("Received Email Request: \n", emailMessage, "\n\n")
+	logger.INFO("Received EmailConfigs Request: \n", emailMessage, "\n\n")
 
 	config, erC := configs.ReadConfigs()
 
@@ -51,10 +51,10 @@ func SendEmail(rw http.ResponseWriter, r *http.Request) {
 		emailMessage.To, message)
 
 	if erE != nil {
-		logger.ERR("Could Not Send Email: ", err)
+		logger.ERR("Could Not Send EmailConfigs: ", err)
 		returnResponse(http.StatusInternalServerError, errors.New(InternalProcessingError), nil, rw)
 		return
 	}
 
-	returnResponse(http.StatusOK, nil, Msg{Message: "Email Sent Successfully"}, rw)
+	returnResponse(http.StatusOK, nil, Msg{Message: "EmailConfigs Sent Successfully"}, rw)
 }

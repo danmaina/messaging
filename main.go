@@ -18,6 +18,7 @@ const (
 	post = "POST"
 )
 
+// main is the application entrypoint
 func main() {
 	// Initialize Configs
 	config, err := configs.ReadConfigs()
@@ -33,6 +34,7 @@ func main() {
 
 	r := mux.NewRouter()
 
+	// Create sub-router under the /email main endpoint
 	emailSubRouter := r.PathPrefix(emailsPrefix).Subrouter()
 
 	//Health Checks intended for use in kubernetes
